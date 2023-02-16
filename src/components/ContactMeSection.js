@@ -25,18 +25,11 @@ const LandingSection = () => {
     initialValues: {
       firstName: "",
       email: "",
-      type: "",
+      type: "hireMe",
       comment: "",
     },
     onSubmit: (values) => {
       submit(" ", values);
-      console.log(values);
-      if (response.type === "success") {
-        onOpen(response.type, response.message);
-        formik.resetForm();
-      } else if (response.type === "error") {
-        onOpen(response.type, response.message);
-      }
     },
     validationSchema: Yup.object({
       firstName: Yup.string().required("Required"),
@@ -47,6 +40,15 @@ const LandingSection = () => {
         .required("Required"),
     }),
   });
+
+  useEffect(() => {
+    if (response) {
+      onOpen(response.type, response.message);
+      if (response.type === "success") {
+        formik.resetForm();
+      }
+    }
+  }, [response]);
 
   const firstNameIsIvalid =
     formik.touched.firstName && formik.errors.firstName ? true : false;

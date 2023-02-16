@@ -18,8 +18,8 @@ const LandingSection = () => (
     <VStack>
       <Avatar src="https://i.pravatar.cc/150?img=7" size="2xl" />
       <Text fontSize="xl">{greeting}</Text>
-      <Heading>{bio1}</Heading>
-      <Heading>{bio2}</Heading>
+      <Heading fontSize="5xl">{bio1}</Heading>
+      <Heading fontSize="5xl">{bio2}</Heading>
     </VStack>
   </FullScreenSection>
 );
